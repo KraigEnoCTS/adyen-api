@@ -68,6 +68,7 @@ public class PaymentRequest implements Serializable {
     private String shopperStatement;
     private String socialSecurityNumber;
     private String telephoneNumber;
+    private Map<String, String> metadata = new HashMap<>();
 
     @PublicApi
     public PaymentRequest() {
@@ -440,6 +441,16 @@ public class PaymentRequest implements Serializable {
         this.paResponse = paResponse;
     }
 
+    @PublicApi
+    public Map<String, String> getMetadata() {
+        return metadata;
+    }
+
+    @PublicApi
+    public void setMetadata(Map<String, String> metadata) {
+        this.metadata = metadata;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.DEFAULT_STYLE).append("additionalAmount", additionalAmount).append("additionalData", additionalData)
@@ -452,6 +463,8 @@ public class PaymentRequest implements Serializable {
                 .append("reference", reference).append("selectedBrand", selectedBrand).append("selectedRecurringDetailReference", selectedRecurringDetailReference)
                 .append("sessionId", sessionId).append("shopperEmail", shopperEmail).append("shopperIP", shopperIP).append("shopperInteraction", shopperInteraction)
                 .append("shopperLocale", shopperLocale).append("shopperName", shopperName).append("shopperReference", shopperReference)
-                .append("shopperStatement", shopperStatement).append("socialSecurityNumber", socialSecurityNumber).append("telephoneNumber", telephoneNumber).toString();
+                .append("shopperStatement", shopperStatement).append("socialSecurityNumber", socialSecurityNumber).append("telephoneNumber", telephoneNumber)
+                .append("metadata", metadata)
+                .toString();
     }
 }

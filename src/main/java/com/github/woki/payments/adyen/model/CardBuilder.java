@@ -47,6 +47,18 @@ public final class CardBuilder {
 
     @PublicApi
     public interface IBuilder {
+        @PublicApi
+        IBuilder billingAddress(Address billingAddress);
+
+        @PublicApi
+        IBuilder issueNumber(int issueNumber);
+
+        @PublicApi
+        IBuilder startMonth(int startMonth);
+
+        @PublicApi
+        IBuilder startYear(int startYear);
+
         Card build();
     }
 
@@ -74,6 +86,30 @@ public final class CardBuilder {
         @Override
         public IExpiry cvc(String cvc) {
             card.setCvc(cvc);
+            return this;
+        }
+
+        @Override
+        public IBuilder billingAddress(Address billingAddress) {
+            card.setBillingAddress(billingAddress);
+            return this;
+        }
+
+        @Override
+        public IBuilder issueNumber(int issueNumber) {
+            card.setIssueNumber(issueNumber);
+            return this;
+        }
+
+        @Override
+        public IBuilder startMonth(int startMonth) {
+            card.setStartMonth(startMonth);
+            return this;
+        }
+
+        @Override
+        public IBuilder startYear(int startYear) {
+            card.setStartYear(startYear);
             return this;
         }
 

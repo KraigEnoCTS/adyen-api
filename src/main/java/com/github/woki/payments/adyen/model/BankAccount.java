@@ -10,12 +10,14 @@ import java.io.Serializable;
 @PublicApi
 public class BankAccount implements Serializable {
     private String bankAccountNumber;
+    private String bankCity;
     private String bankLocationId;
     private String bankName;
     private String bic;
     private String countryCode = "US";
     private String iban;
     private String ownerName;
+    private String taxId;
 
     @PublicApi
     public BankAccount() {
@@ -91,9 +93,29 @@ public class BankAccount implements Serializable {
         this.bankName = bankName;
     }
 
+    @PublicApi
+    public String getBankCity() {
+        return bankCity;
+    }
+
+    @PublicApi
+    public void setBankCity(String bankCity) {
+        this.bankCity = bankCity;
+    }
+
+    @PublicApi
+    public String getTaxId() {
+        return taxId;
+    }
+
+    @PublicApi
+    public void setTaxId(String taxId) {
+        this.taxId = taxId;
+    }
+
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.DEFAULT_STYLE).append("bankAccountNumber", bankAccountNumber).append("bankLocationId", bankLocationId)
-                .append("bankName", bankName).append("bic", bic).append("countryCode", countryCode).append("iban", iban).append("ownerName", ownerName).toString();
+        return new ToStringBuilder(this, ToStringStyle.DEFAULT_STYLE).append("bankAccountNumber", bankAccountNumber).append("bankCity", bankCity).append("bankLocationId", bankLocationId)
+                .append("bankName", bankName).append("bic", bic).append("countryCode", countryCode).append("iban", iban).append("ownerName", ownerName).append("taxId", taxId).toString();
     }
 }

@@ -17,6 +17,7 @@ payment processing.
 * 1.0.0 - Initial
 * 1.2.1 - Added support for proxy configuration
 * 1.3.0 - Added support for CSE
+* 1.3.1 - Updated to cover Adyen's endpoints new version, v18; changes were across Card, BankAccount and PaymentRequest types
 
 ##Current version and Maven dependency
 
@@ -24,7 +25,7 @@ payment processing.
     <dependency>
       <groupId>com.github.woki</groupId>
       <artifactId>payments-adyen-api</artifactId>
-      <version>1.3.1</version>
+      <version>1.3.2</version>
     </dependency>
 ```
 See also this [Sample Client](http://github.com/woki/adyen-client) sample built upon **ayden-api**.

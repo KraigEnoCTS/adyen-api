@@ -41,7 +41,13 @@ public final class BankAccountBuilder {
     @PublicApi
     public interface IBankName {
         @PublicApi
-        IBic bankName(String name);
+        IBankCity bankName(String name);
+    }
+
+    @PublicApi
+    public interface IBankCity {
+        @PublicApi
+        IBic bankCity(String city);
     }
 
     @PublicApi
@@ -65,7 +71,13 @@ public final class BankAccountBuilder {
     @PublicApi
     public interface IOwnerName {
         @PublicApi
-        IBuilder owner(String owner);
+        ITaxId owner(String owner);
+    }
+
+    @PublicApi
+    public interface ITaxId {
+        @PublicApi
+        IBuilder taxId(String taxId);
     }
 
     @PublicApi
@@ -73,7 +85,7 @@ public final class BankAccountBuilder {
         BankAccount build();
     }
 
-    private static final class Builder implements IBuilder, ILocationId, IBankName, IBic, ICountryCode, IIban, IOwnerName {
+    private static final class Builder implements IBuilder, ILocationId, IBankName, IBankCity, IBic, ICountryCode, IIban, IOwnerName, ITaxId {
         private BankAccount account;
 
         Builder(String accountNumber) {
@@ -82,7 +94,7 @@ public final class BankAccountBuilder {
         }
 
         @Override
-        public IBic bankName(String name) {
+        public IBankCity bankName(String name) {
             account.setBankName(name);
             return this;
         }
@@ -117,8 +129,20 @@ public final class BankAccountBuilder {
         }
 
         @Override
-        public IBuilder owner(String owner) {
+        public ITaxId owner(String owner) {
             account.setOwnerName(owner);
+            return this;
+        }
+
+        @Override
+        public IBic bankCity(String city) {
+            account.setBankCity(city);
+            return this;
+        }
+
+        @Override
+        public IBuilder taxId(String taxId) {
+            account.setTaxId(taxId);
             return this;
         }
     }

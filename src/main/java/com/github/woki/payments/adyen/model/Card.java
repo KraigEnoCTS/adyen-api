@@ -37,6 +37,10 @@ public class Card implements Serializable {
     private String number;
     private String cvc;
     private String generationtime;
+    private Address billingAddress;
+    private int issueNumber;
+    private int startMonth;
+    private int startYear;
 
     private static final SimpleDateFormat GENERATION_TIME_FORMAT;
 
@@ -113,10 +117,53 @@ public class Card implements Serializable {
         }
     }
 
+    @PublicApi
+    public Address getBillingAddress() {
+        return billingAddress;
+    }
+
+    @PublicApi
+    public void setBillingAddress(Address billingAddress) {
+        this.billingAddress = billingAddress;
+    }
+
+    @PublicApi
+    public int getIssueNumber() {
+        return issueNumber;
+    }
+
+    @PublicApi
+    public void setIssueNumber(int issueNumber) {
+        this.issueNumber = issueNumber;
+    }
+
+    @PublicApi
+    public int getStartMonth() {
+        return startMonth;
+    }
+
+    @PublicApi
+    public void setStartMonth(int startMonth) {
+        this.startMonth = startMonth;
+    }
+
+    @PublicApi
+    public int getStartYear() {
+        return startYear;
+    }
+
+    @PublicApi
+    public void setStartYear(int startYear) {
+        this.startYear = startYear;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.DEFAULT_STYLE)
+                .append("billingAddress", billingAddress)
                 .append("expiryMonth", expiryMonth).append("expiryYear", expiryYear).append("holderName", holderName)
-                .append("cardNumber", number).append("cvc", cvc).toString();
+                .append("cardNumber", number).append("cvc", cvc)
+                .append("issueNumber", issueNumber).append("startMonth", startMonth).append("startYear", startYear)
+                .toString();
     }
 }

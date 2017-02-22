@@ -161,6 +161,9 @@ public final class PaymentRequestBuilder {
 
         @PublicApi
         IBuilder paResponse(String paResponse);
+
+        @PublicApi
+        IBuilder metadata(Map<String, String> metadata);
         PaymentRequest build();
     }
 
@@ -417,6 +420,12 @@ public final class PaymentRequestBuilder {
         @Override
         public IBuilder paResponse(String paResponse) {
             request.setPaResponse(paResponse);
+            return this;
+        }
+
+        @Override
+        public IBuilder metadata(Map<String, String> metadata) {
+            request.setMetadata(metadata);
             return this;
         }
     }
