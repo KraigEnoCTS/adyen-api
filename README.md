@@ -12,6 +12,7 @@ payment processing.
 
 ##Acknowledgements
 * [Chrischy](https://github.com/Golddragon152) - Proxy configuration and CSE
+* [Cleverbug](https://github.com/cleverbug) - Upgrade to consume Adyen's endpoints V18
 
 ## Milestones
 * 1.0.0 - Initial
