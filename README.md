@@ -25,7 +25,7 @@ payment processing.
     <dependency>
       <groupId>com.github.woki</groupId>
       <artifactId>payments-adyen-api</artifactId>
-      <version>1.3.2</version>
+      <version>1.3.1</version>
     </dependency>
 ```
 See also this [Sample Client](http://github.com/woki/adyen-client) sample built upon **ayden-api**.
