@@ -16,7 +16,6 @@
  */
 package com.github.woki.payments.adyen.action;
 
-import com.github.woki.payments.adyen.PublicApi;
 import org.apache.commons.codec.binary.Base64;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
@@ -32,7 +31,6 @@ import java.util.Locale;
 /**
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
-@PublicApi
 public final class CSEUtil {
     private static final String CSE_VERSION = "1_0_0";
     private static final String CSE_SEPARATOR = "$";
@@ -84,7 +82,7 @@ public final class CSEUtil {
         return Cipher.getInstance("AES/CCM/NoPadding", "BC");
     }
 
-    public static Cipher rsaCipher(@NotNull String cseKeyText) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, InvalidKeySpecException {
+    public static Cipher rsaCipher(@NotNull String cseKeyText) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, InvalidKeySpecException, IllegalArgumentException {
         String[] cseKeyParts = cseKeyText.split("\\|");
         if (cseKeyParts.length != 2) {
             throw new InvalidKeyException("Invalid CSE Key: " + cseKeyText);

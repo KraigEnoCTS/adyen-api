@@ -43,7 +43,7 @@ public class ActionUtilEncryptionTest {
         System.out.println(result);
     }
 
-    @Test(expected = InvalidKeyException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testEncryptionError2() throws Exception {
         String result = CSEUtil.encrypt(CSEUtil.aesCipher(), CSEUtil.rsaCipher(PUBKEY_TEXT_ERR2), "4444444444444444");
         System.out.println(result);

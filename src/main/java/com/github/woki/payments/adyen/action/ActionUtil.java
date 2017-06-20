@@ -18,10 +18,7 @@ package com.github.woki.payments.adyen.action;
 
 import com.github.woki.payments.adyen.APService;
 import com.github.woki.payments.adyen.ClientConfig;
-import com.github.woki.payments.adyen.model.Card;
-import com.github.woki.payments.adyen.model.ModificationResponse;
-import com.github.woki.payments.adyen.model.PaymentRequest;
-import com.github.woki.payments.adyen.model.PaymentResponse;
+import com.github.woki.payments.adyen.model.*;
 import io.advantageous.boon.json.JsonFactory;
 import io.advantageous.boon.json.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
@@ -139,6 +136,38 @@ final class ActionUtil {
         return retval;
     }
 
+    static RecurringDisableResponse handleRecurringDisableResponse(final HttpResponse response) throws IOException {
+        RecurringDisableResponse retval;
+        HttpOutcome httpOutcome = handleHttpResponse(response);
+        if (httpOutcome.content != null) {
+            retval = MAPPER.fromJson(httpOutcome.content, RecurringDisableResponse.class);
+        } else {
+            retval = new RecurringDisableResponse();
+            retval.setStatus(httpOutcome.statusCode);
+            retval.setMessage(httpOutcome.message);
+        }
+        if (httpOutcome.statusCode != HttpStatus.SC_OK) {
+            LOG.warn("recurring disable failed: {} - {}", httpOutcome.statusCode, httpOutcome.message);
+        }
+        return retval;
+    }
+
+    static RecurringListDetailsResponse handleRecurringListDetailsResponse(final HttpResponse response) throws IOException {
+        RecurringListDetailsResponse retval;
+        HttpOutcome httpOutcome = handleHttpResponse(response);
+        if (httpOutcome.content != null) {
+            retval = MAPPER.fromJson(httpOutcome.content, RecurringListDetailsResponse.class);
+        } else {
+            retval = new RecurringListDetailsResponse();
+            retval.setStatus(httpOutcome.statusCode);
+            retval.setMessage(httpOutcome.message);
+        }
+        if (httpOutcome.statusCode != HttpStatus.SC_OK) {
+            LOG.warn("recurring list details failed: {} - {}", httpOutcome.statusCode, httpOutcome.message);
+        }
+        return retval;
+    }
+
     private static HttpOutcome handleHttpResponse(HttpResponse response) throws IOException {
         HttpOutcome retval = new HttpOutcome();
         StatusLine status = response.getStatusLine();
@@ -180,6 +209,30 @@ final class ActionUtil {
         return retval;
     }
 
+    public static RecurringDisableResponse executeRecurringDisable(Request request, ClientConfig config) throws IOException {
+        return createExecutor(config).execute(request).handleResponse(new ResponseHandler<RecurringDisableResponse>() {
+            public RecurringDisableResponse handleResponse(HttpResponse response) throws IOException {
+                RecurringDisableResponse res = ActionUtil.handleRecurringDisableResponse(response);
+                if (LOG.isDebugEnabled()) {
+                    LOG.debug("recurring disable res: {}", res);
+                }
+                return res;
+            }
+        });
+    }
+
+    public static RecurringListDetailsResponse executeRecurringListDetails(Request request, ClientConfig config) throws IOException {
+        return createExecutor(config).execute(request).handleResponse(new ResponseHandler<RecurringListDetailsResponse>() {
+            public RecurringListDetailsResponse handleResponse(HttpResponse response) throws IOException {
+                RecurringListDetailsResponse res = ActionUtil.handleRecurringListDetailsResponse(response);
+                if (LOG.isDebugEnabled()) {
+                    LOG.debug("recurring list details res: {}", res);
+                }
+                return res;
+            }
+        });
+    }
+
     private static class HttpOutcome {
         private int statusCode;
         private String message;
@@ -187,7 +240,7 @@ final class ActionUtil {
     }
 
     private static Object encrypt(ClientConfig config, Object original) throws BadPaddingException, NoSuchAlgorithmException,
-            IllegalBlockSizeException, InvalidAlgorithmParameterException, InvalidKeyException {
+            IllegalBlockSizeException, InvalidAlgorithmParameterException, InvalidKeyException, IllegalArgumentException {
         if (! (original instanceof PaymentRequest)) {
             return original;
         }

@@ -16,7 +16,6 @@
  */
 package com.github.woki.payments.adyen.model;
 
-import com.github.woki.payments.adyen.PublicApi;
 import com.github.woki.payments.adyen.ToStringStyle;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -36,74 +35,62 @@ public class ModificationRequest implements Serializable {
     private String originalReference;
     private String reference;
 
-    @PublicApi
-    public ModificationRequest() {
-    }
-
-    @PublicApi
     public String getMerchantAccount() {
         return merchantAccount;
     }
 
-    @PublicApi
     public void setMerchantAccount(String merchantAccount) {
         this.merchantAccount = merchantAccount;
     }
 
-    @PublicApi
     public String getOriginalReference() {
         return originalReference;
     }
 
-    @PublicApi
     public void setOriginalReference(String originalReference) {
         this.originalReference = originalReference;
     }
 
-    @PublicApi
     public String getReference() {
         return reference;
     }
 
-    @PublicApi
     public void setReference(String reference) {
         this.reference = reference;
     }
 
-    @PublicApi
     public Map<String, String> getAdditionalData() {
         return additionalData;
     }
 
-    @PublicApi
     public void setAdditionalData(Map<String, String> additionalData) {
         this.additionalData = additionalData;
     }
 
-    @PublicApi
     public String getAuthorisationCode() {
         return authorisationCode;
     }
 
-    @PublicApi
     public void setAuthorisationCode(String authorisationCode) {
         this.authorisationCode = authorisationCode;
     }
 
-    @PublicApi
     public Amount getModificationAmount() {
         return modificationAmount;
     }
 
-    @PublicApi
     public void setModificationAmount(Amount modificationAmount) {
         this.modificationAmount = modificationAmount;
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.DEFAULT_STYLE).append("additionalData", additionalData).append("authorisationCode", authorisationCode)
-                .append("merchantAccount", merchantAccount).append("modificationAmount", modificationAmount).append("originalReference", originalReference)
+        return new ToStringBuilder(this, ToStringStyle.DEFAULT_STYLE)
+                .append("additionalData", additionalData)
+                .append("authorisationCode", authorisationCode)
+                .append("merchantAccount", merchantAccount)
+                .append("modificationAmount", modificationAmount)
+                .append("originalReference", originalReference)
                 .append("reference", reference).toString();
     }
 }

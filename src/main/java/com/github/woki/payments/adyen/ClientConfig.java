@@ -231,9 +231,18 @@ public class ClientConfig {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.DEFAULT_STYLE).append("endpointHost", endpointHost).append("connectionTimeout", connectionTimeout)
-                .append("socketTimeout", socketTimeout).append("proxyConfig", proxyConfig).append("proxyHost", proxyHost).append("endpoint", endpoint)
-                .append("username", username).append("password", password).append("proxyUsername", proxyUsername).append("proxyPassword", proxyPassword)
-                .append("extraParameters", extraParameters).append("encryptionKey", encryptionKey).toString();
+        return new ToStringBuilder(this, ToStringStyle.DEFAULT_STYLE)
+                .append("endpointHost", endpointHost)
+                .append("connectionTimeout", connectionTimeout)
+                .append("socketTimeout", socketTimeout)
+                .append("proxyConfig", proxyConfig)
+                .append("proxyHost", proxyHost)
+                .append("endpoint", endpoint)
+                .append("username", username)
+                .append("password", password)
+                .append("proxyUsername", proxyUsername)
+                .append("proxyPassword", proxyPassword)
+                .append("extraParameters", extraParameters)
+                .append("encryptionKey", encryptionKey).toString();
     }
 }

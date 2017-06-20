@@ -16,71 +16,50 @@
  */
 package com.github.woki.payments.adyen.model;
 
-import com.github.woki.payments.adyen.PublicApi;
-
 /**
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
-@PublicApi
 public final class BankAccountBuilder {
     private BankAccountBuilder() {
         // utility
     }
 
-    @PublicApi
     public static ILocationId accountNumber(String accountNumber) {
         return new Builder(accountNumber);
     }
 
-    @PublicApi
     public interface ILocationId {
-        @PublicApi
         IBankName locationId(String locationId);
     }
 
-    @PublicApi
     public interface IBankName {
-        @PublicApi
         IBankCity bankName(String name);
     }
 
-    @PublicApi
     public interface IBankCity {
-        @PublicApi
         IBic bankCity(String city);
     }
 
-    @PublicApi
     public interface IBic {
-        @PublicApi
         ICountryCode bic(String bic);
     }
 
-    @PublicApi
     public interface ICountryCode {
-        @PublicApi
         IIban countryCode(String countryCode);
     }
 
-    @PublicApi
     public interface IIban {
-        @PublicApi
         IOwnerName iban(String iban);
     }
 
-    @PublicApi
     public interface IOwnerName {
-        @PublicApi
         ITaxId owner(String owner);
     }
 
-    @PublicApi
     public interface ITaxId {
-        @PublicApi
         IBuilder taxId(String taxId);
     }
 
-    @PublicApi
     public interface IBuilder {
         BankAccount build();
     }

@@ -17,10 +17,7 @@
 package com.github.woki.payments.adyen;
 
 import com.github.woki.payments.adyen.action.*;
-import com.github.woki.payments.adyen.model.ModificationRequest;
-import com.github.woki.payments.adyen.model.ModificationResponse;
-import com.github.woki.payments.adyen.model.PaymentRequest;
-import com.github.woki.payments.adyen.model.PaymentResponse;
+import com.github.woki.payments.adyen.model.*;
 
 import javax.validation.constraints.NotNull;
 import java.util.Map;
@@ -28,7 +25,6 @@ import java.util.Map;
 /**
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
-@PublicApi
 public final class Client implements IClient {
     private ClientConfig config;
 
@@ -36,47 +32,35 @@ public final class Client implements IClient {
         // disable default constructor
     }
 
-    @PublicApi
     public interface IBuilder {
-        @PublicApi
         IBuilder timeout(long connectionTimeout, long readTimeout);
 
-        @PublicApi
         IBuilder connectionTimeout(long timeout);
 
-        @PublicApi
         IBuilder readTimeout(long timeout);
 
-        @PublicApi
         IBuilder extraParameters(Map<String, String> extraParameters);
 
-        @PublicApi
         IBuilder proxyConfig(String config);
 
-        @PublicApi
         IBuilder encryptionKey(String encryptionKey);
 
-        @PublicApi
         IBuilder addExtraParameter(String key, String value);
 
         Client build();
     }
 
-    @PublicApi
     public static IAccount endpoint(String endpoint) {
         return new Builder(endpoint);
     }
 
-    @PublicApi
     public interface IAccount {
-        @PublicApi
         IBuilder credentials(String username, String password);
     }
 
     private final static class Builder implements IAccount, IBuilder {
         private Client instance = new Client();
 
-        @PublicApi
         private Builder() {
             // disable default constructor
         }
@@ -179,5 +163,15 @@ public final class Client implements IClient {
     @Override
     public ModificationResponse cancelOrRefund(@NotNull ModificationRequest request) {
         return CancelOrRefund.execute(config, request);
+    }
+
+    @Override
+    public RecurringDisableResponse recurringDisable(@NotNull RecurringDisableRequest request) {
+        return RecurringDisable.execute(config, request);
+    }
+
+    @Override
+    public RecurringListDetailsResponse recurringListDetails(@NotNull RecurringListDetailsRequest request) {
+        return RecurringListDetails.execute(config, request);
     }
 }

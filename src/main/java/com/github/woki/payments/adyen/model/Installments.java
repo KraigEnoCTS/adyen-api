@@ -16,7 +16,6 @@
  */
 package com.github.woki.payments.adyen.model;
 
-import com.github.woki.payments.adyen.PublicApi;
 import com.github.woki.payments.adyen.ToStringStyle;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -26,31 +25,27 @@ import java.io.Serializable;
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @SuppressWarnings("serial")
-@PublicApi
 public class Installments implements Serializable {
     private int value;
 
-    @PublicApi
     public Installments() {
     }
 
-    @PublicApi
     public Installments(int value) {
         this.value = value;
     }
 
-    @PublicApi
     public int getValue() {
         return value;
     }
 
-    @PublicApi
     public void setValue(int value) {
         this.value = value;
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.DEFAULT_STYLE).append("value", value).toString();
+        return new ToStringBuilder(this, ToStringStyle.DEFAULT_STYLE)
+                .append("value", value).toString();
     }
 }

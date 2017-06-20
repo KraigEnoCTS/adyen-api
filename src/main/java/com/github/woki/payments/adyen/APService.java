@@ -25,7 +25,9 @@ public enum APService {
     CAPTURE("/pal/servlet/Payment/v18/capture"),
     REFUND("/pal/servlet/Payment/v18/refund"),
     CANCEL("/pal/servlet/Payment/v18/cancel"),
-    CANCEL_OR_REFUND("/pal/servlet/Payment/v18/cancelorrefund")
+    CANCEL_OR_REFUND("/pal/servlet/Payment/v18/cancelOrRefund"),
+    RECURRING_DISABLE("/pal/servlet/Recurring/v18/disable"),
+    RECURRING_LIST_DETAILS("/pal/servlet/Recurring/v18/listRecurringDetails")
     ;
 
     final String path;

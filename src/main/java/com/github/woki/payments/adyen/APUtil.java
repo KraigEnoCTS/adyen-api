@@ -22,23 +22,18 @@ import java.util.UUID;
 /**
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
-@PublicApi
 public final class APUtil {
     private APUtil() {
         // utility
     }
 
-    @PublicApi
     public static final String TEST_ENDPOINT = "https://pal-test.adyen.com";
-    @PublicApi
     public static final String LIVE_ENDPOINT = "https://pal-live.adyen.com";
 
-    @PublicApi
     public enum ReferenceType {
         DATE, TIMESTAMP, UUID
     }
 
-    @PublicApi
     public static String reference(ReferenceType type) {
         String retval = null;
         switch (type) {

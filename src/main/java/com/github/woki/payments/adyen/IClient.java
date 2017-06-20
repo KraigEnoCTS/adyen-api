@@ -18,20 +18,15 @@ package com.github.woki.payments.adyen;
 
 
 import com.github.woki.payments.adyen.error.APSAccessException;
-import com.github.woki.payments.adyen.model.ModificationRequest;
-import com.github.woki.payments.adyen.model.ModificationResponse;
-import com.github.woki.payments.adyen.model.PaymentRequest;
-import com.github.woki.payments.adyen.model.PaymentResponse;
+import com.github.woki.payments.adyen.model.*;
 
 /**
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
-@PublicApi
 public interface IClient {
     /**
      * @return the {@link ClientConfig}
      */
-    @PublicApi
     ClientConfig getClientConfig();
     /**
      * @param request the request
@@ -40,7 +35,6 @@ public interface IClient {
      *
      * @throws APSAccessException on communication error
      */
-    @PublicApi
     PaymentResponse authorise(final PaymentRequest request);
     /**
      * @param request the request
@@ -49,7 +43,6 @@ public interface IClient {
      *
      * @throws APSAccessException on communication error
      */
-    @PublicApi
     PaymentResponse authorise3ds(final PaymentRequest request);
     /**
      * @param request the request
@@ -58,7 +51,6 @@ public interface IClient {
      *
      * @throws APSAccessException on communication error
      */
-    @PublicApi
     PaymentResponse verifyBin(final PaymentRequest request);
     /**
      * @param request the request
@@ -67,7 +59,6 @@ public interface IClient {
      *
      * @throws APSAccessException on communication error
      */
-    @PublicApi
     ModificationResponse capture(ModificationRequest request);
     /**
      * @param request the request
@@ -76,7 +67,6 @@ public interface IClient {
      *
      * @throws APSAccessException on communication error
      */
-    @PublicApi
     ModificationResponse cancel(ModificationRequest request);
     /**
      * @param request the request
@@ -85,7 +75,6 @@ public interface IClient {
      *
      * @throws APSAccessException on communication error
      */
-    @PublicApi
     ModificationResponse refund(ModificationRequest request);
     /**
      * @param request the request
@@ -94,6 +83,21 @@ public interface IClient {
      *
      * @throws APSAccessException on communication error
      */
-    @PublicApi
     ModificationResponse cancelOrRefund(ModificationRequest request);
+    /**
+     * @param request the request
+     *
+     * @return the response
+     *
+     * @throws APSAccessException on communication error
+     */
+    RecurringDisableResponse recurringDisable(RecurringDisableRequest request);
+    /**
+     * @param request the request
+     *
+     * @return the response
+     *
+     * @throws APSAccessException on communication error
+     */
+    RecurringListDetailsResponse recurringListDetails(RecurringListDetailsRequest request);
 }

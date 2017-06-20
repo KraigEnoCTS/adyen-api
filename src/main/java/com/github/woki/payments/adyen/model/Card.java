@@ -16,7 +16,6 @@
  */
 package com.github.woki.payments.adyen.model;
 
-import com.github.woki.payments.adyen.PublicApi;
 import com.github.woki.payments.adyen.ToStringStyle;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -29,7 +28,6 @@ import java.util.TimeZone;
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @SuppressWarnings("serial")
-@PublicApi
 public class Card implements Serializable {
     private int expiryMonth;
     private int expiryYear;
@@ -51,108 +49,84 @@ public class Card implements Serializable {
 
     public static final String CARD_ENCRYPTED_ADDITIONAL_DATA_KEY_NAME = "card.encrypted.json";
 
-    @PublicApi
-    public Card() {
-    }
-
-    @PublicApi
     public int getExpiryMonth() {
         return expiryMonth;
     }
 
-    @PublicApi
     public void setExpiryMonth(int expiryMonth) {
         this.expiryMonth = expiryMonth;
     }
 
-    @PublicApi
     public int getExpiryYear() {
         return expiryYear;
     }
 
-    @PublicApi
     public void setExpiryYear(int expiryYear) {
         this.expiryYear = expiryYear;
     }
 
-    @PublicApi
     public String getHolderName() {
         return holderName;
     }
 
-    @PublicApi
     public void setHolderName(String holderName) {
         this.holderName = holderName;
     }
 
-    @PublicApi
     public String getNumber() {
         return number;
     }
 
-    @PublicApi
     public void setNumber(String number) {
         this.number = number;
     }
 
-    @PublicApi
     public String getCvc() {
         return cvc;
     }
 
-    @PublicApi
     public void setCvc(String cvc) {
         this.cvc = cvc;
     }
 
-    @PublicApi
     public String getGenerationtime() {
         return generationtime;
     }
 
-    @PublicApi
     public void setGenerationtime(Date generationtime) {
         if (generationtime != null) {
             this.generationtime = GENERATION_TIME_FORMAT.format(generationtime);
         }
     }
 
-    @PublicApi
     public Address getBillingAddress() {
         return billingAddress;
     }
 
-    @PublicApi
     public void setBillingAddress(Address billingAddress) {
         this.billingAddress = billingAddress;
     }
 
-    @PublicApi
     public int getIssueNumber() {
         return issueNumber;
     }
 
-    @PublicApi
     public void setIssueNumber(int issueNumber) {
         this.issueNumber = issueNumber;
     }
 
-    @PublicApi
     public int getStartMonth() {
         return startMonth;
     }
 
-    @PublicApi
     public void setStartMonth(int startMonth) {
         this.startMonth = startMonth;
     }
 
-    @PublicApi
     public int getStartYear() {
         return startYear;
     }
 
-    @PublicApi
     public void setStartYear(int startYear) {
         this.startYear = startYear;
     }
@@ -161,9 +135,14 @@ public class Card implements Serializable {
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.DEFAULT_STYLE)
                 .append("billingAddress", billingAddress)
-                .append("expiryMonth", expiryMonth).append("expiryYear", expiryYear).append("holderName", holderName)
-                .append("cardNumber", number).append("cvc", cvc)
-                .append("issueNumber", issueNumber).append("startMonth", startMonth).append("startYear", startYear)
+                .append("expiryMonth", expiryMonth)
+                .append("expiryYear", expiryYear)
+                .append("holderName", holderName)
+                .append("cardNumber", number)
+                .append("cvc", cvc)
+                .append("issueNumber", issueNumber)
+                .append("startMonth", startMonth)
+                .append("startYear", startYear)
                 .toString();
     }
 }

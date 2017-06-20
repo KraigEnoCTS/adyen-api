@@ -16,15 +16,12 @@
  */
 package com.github.woki.payments.adyen.model;
 
-import com.github.woki.payments.adyen.PublicApi;
-
 /**
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
-@PublicApi
 public enum ShopperInteraction {
-    @PublicApi Ecommerce,
-    @PublicApi ContAuth,
-    @PublicApi POS,
-    @PublicApi Moto
+    Ecommerce,
+    ContAuth,
+    POS,
+    Moto
 }
