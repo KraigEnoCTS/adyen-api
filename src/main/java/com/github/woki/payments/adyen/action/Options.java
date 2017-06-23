@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author Willian Oki &ltwillian.oki@gmail.com&gt
+ * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 public final class Options {
     private Map<String, String> options = new HashMap<>();

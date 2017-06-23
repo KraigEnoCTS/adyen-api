@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author Willian Oki &ltwillian.oki@gmail.com&gt
+ * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @RestController
 public class PaymentController {

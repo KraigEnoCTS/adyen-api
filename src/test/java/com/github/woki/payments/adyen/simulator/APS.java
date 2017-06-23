@@ -20,7 +20,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @author Willian Oki &ltwillian.oki@gmail.com&gt
+ * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @SpringBootApplication
 public class APS {
