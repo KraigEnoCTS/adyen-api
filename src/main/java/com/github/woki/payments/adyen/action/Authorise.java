@@ -16,19 +16,12 @@
  */
 package com.github.woki.payments.adyen.action;
 
-import com.github.woki.payments.adyen.APService;
 import com.github.woki.payments.adyen.ClientConfig;
 import com.github.woki.payments.adyen.error.APSAccessException;
 import com.github.woki.payments.adyen.model.PaymentRequest;
 import com.github.woki.payments.adyen.model.PaymentResponse;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.fluent.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.validation.constraints.NotNull;
-import java.io.IOException;
 
 /**
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
@@ -40,33 +33,13 @@ public final class Authorise {
 
     private static final Logger LOG = LoggerFactory.getLogger(Authorise.class);
 
-    private static Request createRequest(ClientConfig config, PaymentRequest request, boolean threeDs) {
+    public static PaymentResponse execute(final ClientConfig config, final PaymentRequest request, boolean threeds) {
         if (LOG.isDebugEnabled()) {
-            LOG.debug("config: {}, request: {}, 3-ds: {}", config, request, threeDs);
-        }
-        APService service = threeDs ? APService.AUTHORISATION_3D : APService.AUTHORISATION;
-        Request retval = ActionUtil.createPost(service, config, request);
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("retval: {}", retval);
-        }
-        return retval;
-    }
-
-    public static PaymentResponse execute(@NotNull ClientConfig config, @NotNull PaymentRequest request, boolean threeDs) {
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("config: {}, request: {}, 3-ds: {}", config, request, threeDs);
+            LOG.debug("config: {}, request: {}, 3-ds: {}", config, request, threeds);
         }
         PaymentResponse retval;
         try {
-            retval = ActionUtil.createExecutor(config).execute(createRequest(config, request, threeDs)).handleResponse(new ResponseHandler<PaymentResponse>() {
-                public PaymentResponse handleResponse(HttpResponse response) throws IOException {
-                    PaymentResponse payres = ActionUtil.handlePaymentResponse(response);
-                    if (LOG.isDebugEnabled()) {
-                        LOG.debug("payres: {}", payres);
-                    }
-                    return payres;
-                }
-            });
+            retval = Endpoint.invoke(config, request, PaymentResponse.class, threeds ? new Options().addOption("threeds") : null);
         } catch (Exception e) {
             LOG.error("authorisation", e);
             throw new APSAccessException("authorization", e);

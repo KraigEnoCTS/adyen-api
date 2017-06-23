@@ -33,7 +33,7 @@ public final class CardBuilder {
     }
 
     public interface IExpiry {
-        IHolder expiry(int year, int month);
+        IHolder expiry(Integer year, Integer month);
     }
 
     public interface IHolder {
@@ -43,11 +43,11 @@ public final class CardBuilder {
     public interface IBuilder {
         IBuilder billingAddress(Address billingAddress);
 
-        IBuilder issueNumber(int issueNumber);
+        IBuilder issueNumber(Integer issueNumber);
 
-        IBuilder startMonth(int startMonth);
+        IBuilder startMonth(Integer startMonth);
 
-        IBuilder startYear(int startYear);
+        IBuilder startYear(Integer startYear);
 
         Card build();
     }
@@ -67,7 +67,7 @@ public final class CardBuilder {
         }
 
         @Override
-        public IHolder expiry(int year, int month) {
+        public IHolder expiry(Integer year, Integer month) {
             card.setExpiryMonth(month);
             card.setExpiryYear(year);
             return this;
@@ -86,19 +86,19 @@ public final class CardBuilder {
         }
 
         @Override
-        public IBuilder issueNumber(int issueNumber) {
+        public IBuilder issueNumber(Integer issueNumber) {
             card.setIssueNumber(issueNumber);
             return this;
         }
 
         @Override
-        public IBuilder startMonth(int startMonth) {
+        public IBuilder startMonth(Integer startMonth) {
             card.setStartMonth(startMonth);
             return this;
         }
 
         @Override
-        public IBuilder startYear(int startYear) {
+        public IBuilder startYear(Integer startYear) {
             card.setStartYear(startYear);
             return this;
         }

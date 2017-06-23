@@ -16,7 +16,7 @@
  */
 package com.github.woki.payments.adyen.model;
 
-import com.github.woki.payments.adyen.ToStringStyle;
+import com.github.woki.payments.adyen.support.ToStringStyle;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
@@ -29,16 +29,16 @@ import java.util.TimeZone;
  */
 @SuppressWarnings("serial")
 public class Card implements Serializable {
-    private int expiryMonth;
-    private int expiryYear;
+    private Integer expiryMonth;
+    private Integer expiryYear;
     private String holderName;
     private String number;
     private String cvc;
     private String generationtime;
     private Address billingAddress;
-    private int issueNumber;
-    private int startMonth;
-    private int startYear;
+    private Integer issueNumber;
+    private Integer startMonth;
+    private Integer startYear;
 
     private static final SimpleDateFormat GENERATION_TIME_FORMAT;
 
@@ -49,19 +49,19 @@ public class Card implements Serializable {
 
     public static final String CARD_ENCRYPTED_ADDITIONAL_DATA_KEY_NAME = "card.encrypted.json";
 
-    public int getExpiryMonth() {
+    public Integer getExpiryMonth() {
         return expiryMonth;
     }
 
-    public void setExpiryMonth(int expiryMonth) {
+    public void setExpiryMonth(Integer expiryMonth) {
         this.expiryMonth = expiryMonth;
     }
 
-    public int getExpiryYear() {
+    public Integer getExpiryYear() {
         return expiryYear;
     }
 
-    public void setExpiryYear(int expiryYear) {
+    public void setExpiryYear(Integer expiryYear) {
         this.expiryYear = expiryYear;
     }
 
@@ -107,27 +107,27 @@ public class Card implements Serializable {
         this.billingAddress = billingAddress;
     }
 
-    public int getIssueNumber() {
+    public Integer getIssueNumber() {
         return issueNumber;
     }
 
-    public void setIssueNumber(int issueNumber) {
+    public void setIssueNumber(Integer issueNumber) {
         this.issueNumber = issueNumber;
     }
 
-    public int getStartMonth() {
+    public Integer getStartMonth() {
         return startMonth;
     }
 
-    public void setStartMonth(int startMonth) {
+    public void setStartMonth(Integer startMonth) {
         this.startMonth = startMonth;
     }
 
-    public int getStartYear() {
+    public Integer getStartYear() {
         return startYear;
     }
 
-    public void setStartYear(int startYear) {
+    public void setStartYear(Integer startYear) {
         this.startYear = startYear;
     }
 

@@ -16,9 +16,6 @@
  */
 package com.github.woki.payments.adyen.model;
 
-import com.github.woki.payments.adyen.ToStringStyle;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
 import java.io.Serializable;
 
 /**
@@ -26,34 +23,34 @@ import java.io.Serializable;
  */
 @SuppressWarnings("serial")
 public class Error implements Serializable {
-    private int status;
-    private int errorCode;
+    private Integer status;
+    private Integer errorCode;
     private String message;
     private String errorType;
 
     public Error() {
     }
 
-    public Error(int status, int errorCode, String message, String errorType) {
+    public Error(Integer status, Integer errorCode, String message, String errorType) {
         this.status = status;
         this.errorCode = errorCode;
         this.message = message;
         this.errorType = errorType;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
-    public int getErrorCode() {
+    public Integer getErrorCode() {
         return errorCode;
     }
 
-    public void setErrorCode(int errorCode) {
+    public void setErrorCode(Integer errorCode) {
         this.errorCode = errorCode;
     }
 
@@ -73,12 +70,17 @@ public class Error implements Serializable {
         this.errorType = errorType;
     }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.DEFAULT_STYLE)
-                .append("status", status)
-                .append("errorCode", errorCode)
-                .append("message", message)
-                .append("errorType", errorType).toString();
-    }
+    public boolean isOk() { return status == 200; }
+
+    public boolean isBadRequest() { return status == 400; }
+
+    public boolean isUnprocessableEntity() { return status == 422; }
+
+    public boolean isUnauthorized() { return status == 401; }
+
+    public boolean isForbidden() { return status == 403; }
+
+    public boolean isNotFound() { return status == 404; }
+
+    public boolean isInternalServerError() { return status == 500; }
 }

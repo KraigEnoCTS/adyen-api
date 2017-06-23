@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package com.github.woki.payments.adyen;
+package com.github.woki.payments.adyen.support;
 
 /**
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
@@ -35,7 +35,7 @@ public class ToStringStyle extends org.apache.commons.lang3.builder.ToStringStyl
     }
 
     @Override
-    protected void appendDetail(StringBuffer buffer, String fieldName, Object value) {
+    protected void appendDetail(final StringBuffer buffer, final String fieldName, final Object value) {
         switch (fieldName) {
             case "cardNumber":
                 buffer.append(maskCardNumber((String) value));
@@ -49,21 +49,21 @@ public class ToStringStyle extends org.apache.commons.lang3.builder.ToStringStyl
         }
     }
 
-    private static String maskCardNumber(String number) {
+    private static String maskCardNumber(final String number) {
         if (number == null || number.length() < CARD_MIN_LEN) {
             return "";
         }
         return extractCardBin(number) + extractMask(number.length(), CARD_UNMASKED_LEN, CARD_MASK_CHAR) + extractCardSuffix(number);
     }
 
-    private static String extractCardBin(String number) {
+    private static String extractCardBin(final String number) {
         if (number != null && number.length() >= CARD_MIN_LEN) {
             return number.substring(0, CARD_BIN_LEN);
         }
         return "";
     }
 
-    private static String extractCardSuffix(String number) {
+    private static String extractCardSuffix(final String number) {
         if (number != null && number.length() >= CARD_MIN_LEN) {
             return number.substring(number.length() - CARD_SUFFIX_LEN);
         }

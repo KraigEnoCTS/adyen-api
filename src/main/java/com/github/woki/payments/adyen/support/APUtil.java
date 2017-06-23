@@ -14,7 +14,7 @@
  * limitations under the License.
  * 
  */
-package com.github.woki.payments.adyen;
+package com.github.woki.payments.adyen.support;
 
 import java.util.Date;
 import java.util.UUID;
@@ -34,7 +34,7 @@ public final class APUtil {
         DATE, TIMESTAMP, UUID
     }
 
-    public static String reference(ReferenceType type) {
+    public static String reference(final ReferenceType type) {
         String retval = null;
         switch (type) {
             case TIMESTAMP:

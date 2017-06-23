@@ -16,7 +16,7 @@
  */
 package com.github.woki.payments.adyen.model;
 
-import com.github.woki.payments.adyen.ToStringStyle;
+import com.github.woki.payments.adyen.support.ToStringStyle;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -36,16 +36,16 @@ public class PaymentRequest implements Serializable {
     private BankAccount bankAccount;
     private Address billingAddress;
     private BrowserInfo browserInfo;
-    private int captureDelayHours;
+    private Integer captureDelayHours;
     private Card card;
     private Date dateOfBirth;
     private ForexQuote dccQuote;
     private Address deliveryAddress;
     private String deliveryDate;
     private String deviceFingerprint;
-    private int fraudOffset;
+    private Long fraudOffset;
     private Installments installments;
-    private int mcc;
+    private Integer mcc;
     private String md;
     private String merchantAccount;
     private String merchantOrderReference;
@@ -116,19 +116,19 @@ public class PaymentRequest implements Serializable {
         this.shopperReference = shopperReference;
     }
 
-    public long getFraudOffset() {
+    public Long getFraudOffset() {
         return fraudOffset;
     }
 
-    public void setFraudOffset(int fraudOffset) {
+    public void setFraudOffset(Long fraudOffset) {
         this.fraudOffset = fraudOffset;
     }
 
-    public int getMcc() {
+    public Integer getMcc() {
         return mcc;
     }
 
-    public void setMcc(int mcc) {
+    public void setMcc(Integer mcc) {
         this.mcc = mcc;
     }
 
@@ -274,11 +274,11 @@ public class PaymentRequest implements Serializable {
         this.socialSecurityNumber = socialSecurityNumber;
     }
 
-    public int getCaptureDelayHours() {
+    public Integer getCaptureDelayHours() {
         return captureDelayHours;
     }
 
-    public void setCaptureDelayHours(int captureDelayHours) {
+    public void setCaptureDelayHours(Integer captureDelayHours) {
         this.captureDelayHours = captureDelayHours;
     }
 

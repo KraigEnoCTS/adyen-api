@@ -16,7 +16,6 @@
  */
 package com.github.woki.payments.adyen;
 
-
 import com.github.woki.payments.adyen.error.APSAccessException;
 import com.github.woki.payments.adyen.model.*;
 
@@ -59,7 +58,7 @@ public interface IClient {
      *
      * @throws APSAccessException on communication error
      */
-    ModificationResponse capture(ModificationRequest request);
+    ModificationResponse capture(final ModificationRequest request);
     /**
      * @param request the request
      *
@@ -67,7 +66,7 @@ public interface IClient {
      *
      * @throws APSAccessException on communication error
      */
-    ModificationResponse cancel(ModificationRequest request);
+    ModificationResponse cancel(final ModificationRequest request);
     /**
      * @param request the request
      *
@@ -75,7 +74,7 @@ public interface IClient {
      *
      * @throws APSAccessException on communication error
      */
-    ModificationResponse refund(ModificationRequest request);
+    ModificationResponse refund(final ModificationRequest request);
     /**
      * @param request the request
      *
@@ -83,7 +82,7 @@ public interface IClient {
      *
      * @throws APSAccessException on communication error
      */
-    ModificationResponse cancelOrRefund(ModificationRequest request);
+    ModificationResponse cancelOrRefund(final ModificationRequest request);
     /**
      * @param request the request
      *
@@ -91,7 +90,7 @@ public interface IClient {
      *
      * @throws APSAccessException on communication error
      */
-    RecurringDisableResponse recurringDisable(RecurringDisableRequest request);
+    RecurringDisableResponse recurringDisable(final RecurringDisableRequest request);
     /**
      * @param request the request
      *
@@ -99,5 +98,5 @@ public interface IClient {
      *
      * @throws APSAccessException on communication error
      */
-    RecurringListDetailsResponse recurringListDetails(RecurringListDetailsRequest request);
+    RecurringListDetailsResponse recurringListDetails(final RecurringListDetailsRequest request);
 }

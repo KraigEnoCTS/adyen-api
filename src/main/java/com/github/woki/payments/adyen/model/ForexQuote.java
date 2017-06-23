@@ -1,6 +1,6 @@
 package com.github.woki.payments.adyen.model;
 
-import com.github.woki.payments.adyen.ToStringStyle;
+import com.github.woki.payments.adyen.support.ToStringStyle;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
@@ -8,7 +8,7 @@ import java.util.Date;
 
 @SuppressWarnings("serial")
 public class ForexQuote implements Serializable {
-    private int basePoints;
+    private Integer basePoints;
     private Date validTill;
     private String account;
     private String accountType;
@@ -21,11 +21,11 @@ public class ForexQuote implements Serializable {
     private String source;
     private String type;
 
-    public int getBasePoints() {
+    public Integer getBasePoints() {
         return basePoints;
     }
 
-    public void setBasePoints(int basePoints) {
+    public void setBasePoints(Integer basePoints) {
         this.basePoints = basePoints;
     }
 

@@ -16,7 +16,7 @@
  */
 package com.github.woki.payments.adyen.model;
 
-import com.github.woki.payments.adyen.ToStringStyle;
+import com.github.woki.payments.adyen.support.ToStringStyle;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
@@ -25,33 +25,33 @@ import java.io.Serializable;
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @SuppressWarnings("serial")
-public class FraudResultItem implements Serializable {
-    private String accountScore;
-    private String checkId;
+public class FraudCheckResult implements Serializable {
+    private Long accountScore;
+    private Long checkId;
     private String name;
 
-    public FraudResultItem() {
+    public FraudCheckResult() {
     }
 
-    public FraudResultItem(String name, String checkId, String accountScore) {
+    public FraudCheckResult(String name, Long checkId, Long accountScore) {
         this.accountScore = accountScore;
         this.checkId = checkId;
         this.name = name;
     }
 
-    public String getAccountScore() {
+    public Long getAccountScore() {
         return accountScore;
     }
 
-    public void setAccountScore(String accountScore) {
+    public void setAccountScore(Long accountScore) {
         this.accountScore = accountScore;
     }
 
-    public String getCheckId() {
+    public Long getCheckId() {
         return checkId;
     }
 
-    public void setCheckId(String checkId) {
+    public void setCheckId(Long checkId) {
         this.checkId = checkId;
     }
 

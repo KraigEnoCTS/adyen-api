@@ -16,16 +16,12 @@
  */
 package com.github.woki.payments.adyen.action;
 
-import com.github.woki.payments.adyen.APService;
 import com.github.woki.payments.adyen.ClientConfig;
 import com.github.woki.payments.adyen.error.APSAccessException;
 import com.github.woki.payments.adyen.model.ModificationRequest;
 import com.github.woki.payments.adyen.model.ModificationResponse;
-import org.apache.http.client.fluent.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.validation.constraints.NotNull;
 
 /**
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
@@ -37,24 +33,13 @@ public final class Refund {
 
     private static final Logger LOG = LoggerFactory.getLogger(Refund.class);
 
-    private static Request createRequest(ClientConfig config, ModificationRequest request) {
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("config: {}, request: {}", config, request);
-        }
-        Request retval = ActionUtil.createPost(APService.REFUND, config, request);
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("retval: {}", retval);
-        }
-        return retval;
-    }
-
-    public static ModificationResponse execute(@NotNull ClientConfig config, @NotNull ModificationRequest request) {
+    public static ModificationResponse execute(final ClientConfig config, final ModificationRequest request) {
         if (LOG.isDebugEnabled()) {
             LOG.debug("config: {}, request: {}", config, request);
         }
         ModificationResponse retval;
         try {
-            retval = ActionUtil.executeModification(createRequest(config, request), config);
+            retval = Endpoint.invoke(config, request, ModificationResponse.class, new Options().addOption("action", "refund"));
         } catch (Exception e) {
             LOG.error("refund", e);
             throw new APSAccessException("refund", e);

@@ -17,6 +17,9 @@
 package com.github.woki.payments.adyen;
 
 import com.github.woki.payments.adyen.action.CSEUtil;
+import com.github.woki.payments.adyen.support.APService;
+import com.github.woki.payments.adyen.support.APUtil;
+import com.github.woki.payments.adyen.support.ToStringStyle;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.http.HttpHost;
@@ -50,7 +53,7 @@ public class ClientConfig {
     private Cipher rsaCipher;
 
     private static final Logger LOG = LoggerFactory.getLogger(ClientConfig.class);
-    private final static Pattern PROXY_CONFIG_PATTERN = Pattern.compile("(.*):(.*)@([a-zA-Z0-9\\.:]+):(\\d+)|([a-zA-Z0-9\\.:]+):(\\d+)");
+    private static final Pattern PROXY_CONFIG_PATTERN = Pattern.compile("(.*):(.*)@([a-zA-Z0-9\\.:]+):(\\d+)|([a-zA-Z0-9\\.:]+):(\\d+)");
 
     /**
      * Constructor
@@ -59,7 +62,7 @@ public class ClientConfig {
      *
      * @throws IllegalArgumentException on invalid URI
      */
-    public ClientConfig(String endpoint) {
+    public ClientConfig(final String endpoint) {
         if (StringUtils.isBlank(endpoint)) {
             throw new IllegalArgumentException("Invalid endpoint: " + endpoint);
         }
@@ -96,7 +99,7 @@ public class ClientConfig {
         this.socketTimeout = socketTimeout;
     }
 
-    public String getEndpointPort(APService service) {
+    public String getEndpointPort(final APService service) {
         return endpoint + service.getPath();
     }
 
@@ -110,7 +113,7 @@ public class ClientConfig {
     /**
      * @param username the username to set
      */
-    void setUsername(String username) {
+    void setUsername(final String username) {
         this.username = username;
     }
 
@@ -124,7 +127,7 @@ public class ClientConfig {
     /**
      * @param password the password to set
      */
-    void setPassword(String password) {
+    void setPassword(final String password) {
         this.password = password;
     }
 
@@ -138,7 +141,7 @@ public class ClientConfig {
     /**
      * @param extraParameters the extra parameters map to set
      */
-    void setExtraParameters(Map<String, String> extraParameters) {
+    void setExtraParameters(final Map<String, String> extraParameters) {
         this.extraParameters = extraParameters;
     }
 
@@ -146,7 +149,7 @@ public class ClientConfig {
      * @param key the extra parameter key
      * @param value the extra parameter value
      */
-    void addExtraParameter(String key, String value) {
+    void addExtraParameter(final String key, final String value) {
         extraParameters.put(key, value);
     }
 
@@ -159,7 +162,7 @@ public class ClientConfig {
      *
      * @param proxyConfig the specification
      */
-    void setProxyConfig(String proxyConfig) {
+    void setProxyConfig(final String proxyConfig) {
         this.proxyConfig = proxyConfig;
     }
 
@@ -203,7 +206,7 @@ public class ClientConfig {
         return encryptionKey;
     }
 
-    void setEncryptionKey(String encryptionKey) {
+    void setEncryptionKey(final String encryptionKey) {
         this.encryptionKey = encryptionKey;
     }
 

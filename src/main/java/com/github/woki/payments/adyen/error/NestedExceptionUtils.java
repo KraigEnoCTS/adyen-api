@@ -24,7 +24,10 @@ package com.github.woki.payments.adyen.error;
  *
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
-public class NestedExceptionUtils {
+public final class NestedExceptionUtils {
+    private NestedExceptionUtils() {
+        // utility
+    }
     /**
      * Build a message for the given base message and root cause.
      *
@@ -33,7 +36,7 @@ public class NestedExceptionUtils {
      *
      * @return the full exception message
      */
-    public static String buildMessage(String message, Throwable cause) {
+    public static String buildMessage(final String message, final Throwable cause) {
         if (cause != null) {
             StringBuilder sb = new StringBuilder();
             if (message != null) {

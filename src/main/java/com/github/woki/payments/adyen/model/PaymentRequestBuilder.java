@@ -54,7 +54,7 @@ public final class PaymentRequestBuilder {
 
         IBuilder browserInfo(String userAgent, String acceptHeader);
 
-        IBuilder captureDelayHours(int captureDelayHours);
+        IBuilder captureDelayHours(Integer captureDelayHours);
 
         IBuilder card(Card card);
 
@@ -66,11 +66,11 @@ public final class PaymentRequestBuilder {
 
         IBuilder deviceFingerprint(String deviceFingerprint);
 
-        IBuilder fraudOffset(int fraudOffset);
+        IBuilder fraudOffset(Long fraudOffset);
 
-        IBuilder installments(int value);
+        IBuilder installments(Integer value);
 
-        IBuilder mcc(int mcc);
+        IBuilder mcc(Integer mcc);
 
         IBuilder merchantOrderReference(String reference);
 
@@ -201,13 +201,13 @@ public final class PaymentRequestBuilder {
         }
 
         @Override
-        public IBuilder fraudOffset(int offset) {
+        public IBuilder fraudOffset(Long offset) {
             request.setFraudOffset(offset);
             return this;
         }
 
         @Override
-        public IBuilder mcc(int mcc) {
+        public IBuilder mcc(Integer mcc) {
             request.setMcc(mcc);
             return this;
         }
@@ -279,7 +279,7 @@ public final class PaymentRequestBuilder {
         }
 
         @Override
-        public IBuilder captureDelayHours(int captureDelayHours) {
+        public IBuilder captureDelayHours(Integer captureDelayHours) {
             request.setCaptureDelayHours(captureDelayHours);
             return this;
         }
@@ -303,7 +303,7 @@ public final class PaymentRequestBuilder {
         }
 
         @Override
-        public IBuilder installments(int value) {
+        public IBuilder installments(Integer value) {
             request.setInstallments(new Installments(value));
             return this;
         }

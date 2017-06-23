@@ -26,7 +26,7 @@ public final class ForexQuoteBuilder {
         // builder
     }
 
-    public static IValidTill base(String type, String reference, int basePoints) {
+    public static IValidTill base(String type, String reference, Integer basePoints) {
         return new Builder(type, reference, basePoints);
     }
 
@@ -57,7 +57,7 @@ public final class ForexQuoteBuilder {
     private static final class Builder implements IBuilder, IValidTill, IAccount, IAmounts, ISource, ISignature {
         private ForexQuote quote;
 
-        Builder(String type, String reference, int basePoints) {
+        Builder(String type, String reference, Integer basePoints) {
             quote = new ForexQuote();
             quote.setType(type);
             quote.setReference(reference);

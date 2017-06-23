@@ -16,6 +16,8 @@
  */
 package com.github.woki.payments.adyen;
 
+import com.github.woki.payments.adyen.support.APService;
+import com.github.woki.payments.adyen.support.APUtil;
 import org.apache.http.HttpHost;
 import org.junit.Assert;
 import org.junit.Test;

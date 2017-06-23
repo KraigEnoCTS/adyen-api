@@ -19,7 +19,7 @@ package com.github.woki.payments.adyen.error;
 /**
  * Handy class for wrapping runtime {@code Exceptions} with a root cause.
  * <p>
- *     This class is {@code abstract} to force the programmer to extend the class. {@code getMessage} will include nested exception
+ *     This class is {@code abstract} to force the programmer to extend the class. {@code getHttpErrorMessage} will include nested exception
  * information; {@code printStackTrace} and other like methods will delegate to the wrapped exception, if any.
  * </p>
  * <p>
@@ -39,7 +39,7 @@ public abstract class NestedRuntimeException extends RuntimeException {
      *
      * @param msg the detail message
      */
-    public NestedRuntimeException(String msg) {
+    public NestedRuntimeException(final String msg) {
         super(msg);
     }
 
@@ -49,7 +49,7 @@ public abstract class NestedRuntimeException extends RuntimeException {
      * @param msg the detail message
      * @param cause the nested exception
      */
-    public NestedRuntimeException(String msg, Throwable cause) {
+    public NestedRuntimeException(final String msg, final Throwable cause) {
         super(msg, cause);
     }
 

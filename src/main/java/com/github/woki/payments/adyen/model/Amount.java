@@ -16,8 +16,7 @@
  */
 package com.github.woki.payments.adyen.model;
 
-import com.github.woki.payments.adyen.ToStringStyle;
-import io.advantageous.boon.json.annotations.JsonInclude;
+import com.github.woki.payments.adyen.support.ToStringStyle;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
@@ -29,8 +28,7 @@ import java.util.Currency;
 @SuppressWarnings("serial")
 public class Amount implements Serializable {
     private Currency currency;
-    @JsonInclude
-    private long value;
+    private Long value = 0L;
 
     public Amount() {
     }
@@ -48,11 +46,11 @@ public class Amount implements Serializable {
         this.currency = currency;
     }
 
-    public long getValue() {
+    public Long getValue() {
         return value;
     }
 
-    public void setValue(long value) {
+    public void setValue(Long value) {
         this.value = value;
     }
 

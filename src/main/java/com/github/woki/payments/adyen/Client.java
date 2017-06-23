@@ -19,7 +19,6 @@ package com.github.woki.payments.adyen;
 import com.github.woki.payments.adyen.action.*;
 import com.github.woki.payments.adyen.model.*;
 
-import javax.validation.constraints.NotNull;
 import java.util.Map;
 
 /**
@@ -39,33 +38,33 @@ public final class Client implements IClient {
 
         IBuilder readTimeout(long timeout);
 
-        IBuilder extraParameters(Map<String, String> extraParameters);
+        IBuilder extraParameters(final Map<String, String> extraParameters);
 
-        IBuilder proxyConfig(String config);
+        IBuilder proxyConfig(final String config);
 
-        IBuilder encryptionKey(String encryptionKey);
+        IBuilder encryptionKey(final String encryptionKey);
 
-        IBuilder addExtraParameter(String key, String value);
+        IBuilder addExtraParameter(final String key, final String value);
 
         Client build();
     }
 
-    public static IAccount endpoint(String endpoint) {
+    public static IAccount endpoint(final String endpoint) {
         return new Builder(endpoint);
     }
 
     public interface IAccount {
-        IBuilder credentials(String username, String password);
+        IBuilder credentials(final String username, final String password);
     }
 
-    private final static class Builder implements IAccount, IBuilder {
+    private static final class Builder implements IAccount, IBuilder {
         private Client instance = new Client();
 
         private Builder() {
             // disable default constructor
         }
 
-        Builder(String endpoint) {
+        Builder(final String endpoint) {
             instance.config = new ClientConfig(endpoint);
         }
 
@@ -89,25 +88,25 @@ public final class Client implements IClient {
         }
 
         @Override
-        public IBuilder extraParameters(Map<String, String> extraParameters) {
+        public IBuilder extraParameters(final Map<String, String> extraParameters) {
             instance.config.setExtraParameters(extraParameters);
             return this;
         }
 
         @Override
-        public IBuilder proxyConfig(String config) {
+        public IBuilder proxyConfig(final String config) {
             instance.config.setProxyConfig(config);
             return this;
         }
 
         @Override
-        public IBuilder encryptionKey(String encryptionKey) {
+        public IBuilder encryptionKey(final String encryptionKey) {
             instance.config.setEncryptionKey(encryptionKey);
             return this;
         }
 
         @Override
-        public IBuilder addExtraParameter(String key, String value) {
+        public IBuilder addExtraParameter(final String key, final String value) {
             instance.config.addExtraParameter(key, value);
             return this;
         }
@@ -118,7 +117,7 @@ public final class Client implements IClient {
         }
 
         @Override
-        public IBuilder credentials(String username, String password) {
+        public IBuilder credentials(final String username, final String password) {
             instance.config.setUsername(username);
             instance.config.setPassword(password);
             return this;
@@ -131,47 +130,47 @@ public final class Client implements IClient {
     }
 
     @Override
-    public PaymentResponse authorise(@NotNull PaymentRequest request) {
+    public PaymentResponse authorise(final PaymentRequest request) {
         return Authorise.execute(config, request, false);
     }
 
     @Override
-    public PaymentResponse authorise3ds(@NotNull PaymentRequest request) {
+    public PaymentResponse authorise3ds(final PaymentRequest request) {
         return Authorise.execute(config, request, true);
     }
 
     @Override
-    public PaymentResponse verifyBin(@NotNull PaymentRequest request) {
+    public PaymentResponse verifyBin(final PaymentRequest request) {
         return Authorise.execute(config, request, false);
     }
 
     @Override
-    public ModificationResponse capture(@NotNull ModificationRequest request) {
+    public ModificationResponse capture(final ModificationRequest request) {
         return Capture.execute(config, request);
     }
 
     @Override
-    public ModificationResponse cancel(@NotNull ModificationRequest request) {
+    public ModificationResponse cancel(final ModificationRequest request) {
         return Cancel.execute(config, request);
     }
 
     @Override
-    public ModificationResponse refund(@NotNull ModificationRequest request) {
+    public ModificationResponse refund(final ModificationRequest request) {
         return Refund.execute(config, request);
     }
 
     @Override
-    public ModificationResponse cancelOrRefund(@NotNull ModificationRequest request) {
+    public ModificationResponse cancelOrRefund(final ModificationRequest request) {
         return CancelOrRefund.execute(config, request);
     }
 
     @Override
-    public RecurringDisableResponse recurringDisable(@NotNull RecurringDisableRequest request) {
+    public RecurringDisableResponse recurringDisable(final RecurringDisableRequest request) {
         return RecurringDisable.execute(config, request);
     }
 
     @Override
-    public RecurringListDetailsResponse recurringListDetails(@NotNull RecurringListDetailsRequest request) {
+    public RecurringListDetailsResponse recurringListDetails(final RecurringListDetailsRequest request) {
         return RecurringListDetails.execute(config, request);
     }
 }

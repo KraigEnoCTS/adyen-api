@@ -21,7 +21,6 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 import javax.crypto.*;
 import javax.crypto.spec.IvParameterSpec;
-import javax.validation.constraints.NotNull;
 import java.math.BigInteger;
 import java.security.*;
 import java.security.spec.InvalidKeySpecException;
@@ -57,7 +56,7 @@ public final class CSEUtil {
         return iv;
     }
 
-    static String encrypt(Cipher aesCipher, Cipher rsaCipher, String plainText) throws BadPaddingException, IllegalBlockSizeException,
+    static String encrypt(final Cipher aesCipher, final Cipher rsaCipher, final String plainText) throws BadPaddingException, IllegalBlockSizeException,
             NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException {
         SecretKey aesKey = aesKey(256);
         byte[] iv = iv(CSE_RANDOM, 12);
@@ -82,7 +81,7 @@ public final class CSEUtil {
         return Cipher.getInstance("AES/CCM/NoPadding", "BC");
     }
 
-    public static Cipher rsaCipher(@NotNull String cseKeyText) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, InvalidKeySpecException, IllegalArgumentException {
+    public static Cipher rsaCipher(final String cseKeyText) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, InvalidKeySpecException, IllegalArgumentException {
         String[] cseKeyParts = cseKeyText.split("\\|");
         if (cseKeyParts.length != 2) {
             throw new InvalidKeyException("Invalid CSE Key: " + cseKeyText);
