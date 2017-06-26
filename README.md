@@ -15,6 +15,7 @@ payment processing.
 * [Cleverbug](https://github.com/cleverbug) - Upgrade to consume Adyen's endpoints V18
 
 ## Milestones
+* 2.25.1 - Fixed URIs for v25.
 * 2.25.0 - Updated to cover Adyen's endpoints new version, v25.
 * 2.18.1 - Bug fixes; code rationalizations; tests correctness; replaced boon's JSON ObjectMapper w/ Jackson's to properly handle atypical collections
  in the response.
@@ -33,7 +34,7 @@ From version 2.* on the minor version number is used to show what Adyen's API ve
     <dependency>
       <groupId>com.github.woki</groupId>
       <artifactId>payments-adyen-api</artifactId>
-      <version>2.25.0</version>
+      <version>2.25.1</version>
     </dependency>
 ```
 See also this [Sample Client](http://github.com/woki/adyen-client) sample built upon **ayden-api**.

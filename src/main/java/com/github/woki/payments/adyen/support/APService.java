@@ -26,14 +26,14 @@ import com.github.woki.payments.adyen.model.RecurringListDetailsRequest;
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 public enum APService {
-    AUTHORISATION("/pal/servlet/Payment/v18/authorise"),
-    AUTHORISATION_3D("/pal/servlet/Payment/v18/authorise3d"),
-    CAPTURE("/pal/servlet/Payment/v18/capture"),
-    REFUND("/pal/servlet/Payment/v18/refund"),
-    CANCEL("/pal/servlet/Payment/v18/cancel"),
-    CANCEL_OR_REFUND("/pal/servlet/Payment/v18/cancelOrRefund"),
-    RECURRING_DISABLE("/pal/servlet/Recurring/v18/disable"),
-    RECURRING_LIST_DETAILS("/pal/servlet/Recurring/v18/listRecurringDetails")
+    AUTHORISATION("/pal/servlet/Payment/v25/authorise"),
+    AUTHORISATION_3D("/pal/servlet/Payment/v25/authorise3d"),
+    CAPTURE("/pal/servlet/Payment/v25/capture"),
+    REFUND("/pal/servlet/Payment/v25/refund"),
+    CANCEL("/pal/servlet/Payment/v25/cancel"),
+    CANCEL_OR_REFUND("/pal/servlet/Payment/v25/cancelOrRefund"),
+    RECURRING_DISABLE("/pal/servlet/Recurring/v25/disable"),
+    RECURRING_LIST_DETAILS("/pal/servlet/Recurring/v25/listRecurringDetails")
     ;
 
     final String path;
