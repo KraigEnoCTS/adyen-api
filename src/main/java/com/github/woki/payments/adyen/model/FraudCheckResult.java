@@ -17,6 +17,8 @@
 package com.github.woki.payments.adyen.model;
 
 import com.github.woki.payments.adyen.support.ToStringStyle;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
@@ -25,6 +27,8 @@ import java.io.Serializable;
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @SuppressWarnings("serial")
+@Getter
+@Setter
 public class FraudCheckResult implements Serializable {
     private Long accountScore;
     private Long checkId;
@@ -36,30 +40,6 @@ public class FraudCheckResult implements Serializable {
     public FraudCheckResult(String name, Long checkId, Long accountScore) {
         this.accountScore = accountScore;
         this.checkId = checkId;
-        this.name = name;
-    }
-
-    public Long getAccountScore() {
-        return accountScore;
-    }
-
-    public void setAccountScore(Long accountScore) {
-        this.accountScore = accountScore;
-    }
-
-    public Long getCheckId() {
-        return checkId;
-    }
-
-    public void setCheckId(Long checkId) {
-        this.checkId = checkId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
     }
 

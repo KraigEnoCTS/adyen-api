@@ -16,6 +16,8 @@
  */
 package com.github.woki.payments.adyen.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -28,43 +30,13 @@ import java.util.List;
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @SuppressWarnings("serial")
+@Getter
+@Setter
 public class RecurringListDetailsResponse extends Error implements Serializable {
     private Date creationDate;
     private String lastKnownShopperEmail;
     private String shopperReference;
     private List<RecurringDetail> details = new ArrayList<>();
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public String getLastKnownShopperEmail() {
-        return lastKnownShopperEmail;
-    }
-
-    public void setLastKnownShopperEmail(String lastKnownShopperEmail) {
-        this.lastKnownShopperEmail = lastKnownShopperEmail;
-    }
-
-    public String getShopperReference() {
-        return shopperReference;
-    }
-
-    public void setShopperReference(String shopperReference) {
-        this.shopperReference = shopperReference;
-    }
-
-    public List<RecurringDetail> getDetails() {
-        return details;
-    }
-
-    public void setDetails(List<RecurringDetail> details) {
-        this.details = details;
-    }
 
     @Override
     public String toString() {

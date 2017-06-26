@@ -16,6 +16,8 @@
  */
 package com.github.woki.payments.adyen.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -25,52 +27,14 @@ import java.io.Serializable;
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @SuppressWarnings("serial")
+@Getter
+@Setter
 public class ELV implements Serializable {
     private String bankAccountNumber;
 	private String bankLocationId;
 	private String bankName;
 	private String bankLocation;
 	private String accountHolderName;
-
-    public String getBankAccountNumber() {
-        return bankAccountNumber;
-    }
-
-    public void setBankAccountNumber(String bankAccountNumber) {
-        this.bankAccountNumber = bankAccountNumber;
-    }
-
-    public String getBankLocationId() {
-        return bankLocationId;
-    }
-
-    public void setBankLocationId(String bankLocationId) {
-        this.bankLocationId = bankLocationId;
-    }
-
-    public String getBankName() {
-        return bankName;
-    }
-
-    public void setBankName(String bankName) {
-        this.bankName = bankName;
-    }
-
-    public String getBankLocation() {
-        return bankLocation;
-    }
-
-    public void setBankLocation(String bankLocation) {
-        this.bankLocation = bankLocation;
-    }
-
-    public String getAccountHolderName() {
-        return accountHolderName;
-    }
-
-    public void setAccountHolderName(String accountHolderName) {
-        this.accountHolderName = accountHolderName;
-    }
 
     @Override
     public String toString() {

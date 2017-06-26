@@ -16,6 +16,8 @@
  */
 package com.github.woki.payments.adyen.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -27,25 +29,11 @@ import java.util.List;
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @SuppressWarnings("serial")
+@Getter
+@Setter
 public class RecurringDisableResponse extends Error implements Serializable {
     private List<RecurringDetail> details = new ArrayList<>();
     private String response;
-
-    public List<RecurringDetail> getDetails() {
-        return details;
-    }
-
-    public void setDetails(List<RecurringDetail> details) {
-        this.details = details;
-    }
-
-    public String getResponse() {
-        return response;
-    }
-
-    public void setResponse(String response) {
-        this.response = response;
-    }
 
     @Override
     public String toString() {

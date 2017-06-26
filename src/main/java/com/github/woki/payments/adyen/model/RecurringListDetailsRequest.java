@@ -16,6 +16,8 @@
  */
 package com.github.woki.payments.adyen.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -25,6 +27,8 @@ import java.io.Serializable;
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @SuppressWarnings("serial")
+@Getter
+@Setter
 public class RecurringListDetailsRequest implements Serializable {
     private String merchantAccount;
     private ContractType contract;
@@ -36,30 +40,6 @@ public class RecurringListDetailsRequest implements Serializable {
     public RecurringListDetailsRequest(String merchantAccount, ContractType contract, String shopperReference) {
         this.merchantAccount = merchantAccount;
         this.contract = contract;
-        this.shopperReference = shopperReference;
-    }
-
-    public String getMerchantAccount() {
-        return merchantAccount;
-    }
-
-    public void setMerchantAccount(String merchantAccount) {
-        this.merchantAccount = merchantAccount;
-    }
-
-    public ContractType getContract() {
-        return contract;
-    }
-
-    public void setContract(ContractType contract) {
-        this.contract = contract;
-    }
-
-    public String getShopperReference() {
-        return shopperReference;
-    }
-
-    public void setShopperReference(String shopperReference) {
         this.shopperReference = shopperReference;
     }
 

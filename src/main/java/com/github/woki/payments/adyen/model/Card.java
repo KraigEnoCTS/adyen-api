@@ -17,6 +17,8 @@
 package com.github.woki.payments.adyen.model;
 
 import com.github.woki.payments.adyen.support.ToStringStyle;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
@@ -28,6 +30,8 @@ import java.util.TimeZone;
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @SuppressWarnings("serial")
+@Getter
+@Setter
 public class Card implements Serializable {
     private Integer expiryMonth;
     private Integer expiryYear;
@@ -35,7 +39,6 @@ public class Card implements Serializable {
     private String number;
     private String cvc;
     private String generationtime;
-    private Address billingAddress;
     private Integer issueNumber;
     private Integer startMonth;
     private Integer startYear;
@@ -49,92 +52,15 @@ public class Card implements Serializable {
 
     public static final String CARD_ENCRYPTED_ADDITIONAL_DATA_KEY_NAME = "card.encrypted.json";
 
-    public Integer getExpiryMonth() {
-        return expiryMonth;
-    }
-
-    public void setExpiryMonth(Integer expiryMonth) {
-        this.expiryMonth = expiryMonth;
-    }
-
-    public Integer getExpiryYear() {
-        return expiryYear;
-    }
-
-    public void setExpiryYear(Integer expiryYear) {
-        this.expiryYear = expiryYear;
-    }
-
-    public String getHolderName() {
-        return holderName;
-    }
-
-    public void setHolderName(String holderName) {
-        this.holderName = holderName;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public String getCvc() {
-        return cvc;
-    }
-
-    public void setCvc(String cvc) {
-        this.cvc = cvc;
-    }
-
-    public String getGenerationtime() {
-        return generationtime;
-    }
-
     public void setGenerationtime(Date generationtime) {
         if (generationtime != null) {
             this.generationtime = GENERATION_TIME_FORMAT.format(generationtime);
         }
     }
 
-    public Address getBillingAddress() {
-        return billingAddress;
-    }
-
-    public void setBillingAddress(Address billingAddress) {
-        this.billingAddress = billingAddress;
-    }
-
-    public Integer getIssueNumber() {
-        return issueNumber;
-    }
-
-    public void setIssueNumber(Integer issueNumber) {
-        this.issueNumber = issueNumber;
-    }
-
-    public Integer getStartMonth() {
-        return startMonth;
-    }
-
-    public void setStartMonth(Integer startMonth) {
-        this.startMonth = startMonth;
-    }
-
-    public Integer getStartYear() {
-        return startYear;
-    }
-
-    public void setStartYear(Integer startYear) {
-        this.startYear = startYear;
-    }
-
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.DEFAULT_STYLE)
-                .append("billingAddress", billingAddress)
                 .append("expiryMonth", expiryMonth)
                 .append("expiryYear", expiryYear)
                 .append("holderName", holderName)

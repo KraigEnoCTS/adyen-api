@@ -17,6 +17,8 @@
 package com.github.woki.payments.adyen.model;
 
 import com.github.woki.payments.adyen.support.ToStringStyle;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
@@ -25,6 +27,8 @@ import java.io.Serializable;
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @SuppressWarnings("serial")
+@Getter
+@Setter
 public class Installments implements Serializable {
     private Integer value;
 
@@ -32,14 +36,6 @@ public class Installments implements Serializable {
     }
 
     public Installments(Integer value) {
-        this.value = value;
-    }
-
-    public Integer getValue() {
-        return value;
-    }
-
-    public void setValue(Integer value) {
         this.value = value;
     }
 

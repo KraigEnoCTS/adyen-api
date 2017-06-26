@@ -17,6 +17,8 @@
 package com.github.woki.payments.adyen.model;
 
 import com.github.woki.payments.adyen.support.ToStringStyle;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
@@ -25,6 +27,8 @@ import java.io.Serializable;
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @SuppressWarnings("serial")
+@Getter
+@Setter
 public class BrowserInfo implements Serializable {
     private String userAgent;
     private String acceptHeader;
@@ -34,22 +38,6 @@ public class BrowserInfo implements Serializable {
 
     public BrowserInfo(String userAgent, String acceptHeader) {
         this.userAgent = userAgent;
-        this.acceptHeader = acceptHeader;
-    }
-
-    public String getUserAgent() {
-        return userAgent;
-    }
-
-    public void setUserAgent(String userAgent) {
-        this.userAgent = userAgent;
-    }
-
-    public String getAcceptHeader() {
-        return acceptHeader;
-    }
-
-    public void setAcceptHeader(String acceptHeader) {
         this.acceptHeader = acceptHeader;
     }
 

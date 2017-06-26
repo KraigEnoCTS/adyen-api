@@ -41,8 +41,6 @@ public final class CardBuilder {
     }
 
     public interface IBuilder {
-        IBuilder billingAddress(Address billingAddress);
-
         IBuilder issueNumber(Integer issueNumber);
 
         IBuilder startMonth(Integer startMonth);
@@ -76,12 +74,6 @@ public final class CardBuilder {
         @Override
         public IExpiry cvc(String cvc) {
             card.setCvc(cvc);
-            return this;
-        }
-
-        @Override
-        public IBuilder billingAddress(Address billingAddress) {
-            card.setBillingAddress(billingAddress);
             return this;
         }
 

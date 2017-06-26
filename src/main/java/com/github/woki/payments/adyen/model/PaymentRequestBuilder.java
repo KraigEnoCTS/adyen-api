@@ -118,6 +118,15 @@ public final class PaymentRequestBuilder {
         IBuilder paResponse(String paResponse);
 
         IBuilder metadata(Map<String, String> metadata);
+
+        IBuilder store(String store);
+
+        IBuilder totalsGroup(String totalsGroup);
+
+        IBuilder entityType(String entityType);
+
+        IBuilder nationality(String nationality);
+
         PaymentRequest build();
     }
 
@@ -380,6 +389,30 @@ public final class PaymentRequestBuilder {
         @Override
         public IBuilder metadata(Map<String, String> metadata) {
             request.setMetadata(metadata);
+            return this;
+        }
+
+        @Override
+        public IBuilder store(String store) {
+            request.setStore(store);
+            return this;
+        }
+
+        @Override
+        public IBuilder totalsGroup(String totalsGroup) {
+            request.setTotalsGroup(totalsGroup);
+            return this;
+        }
+
+        @Override
+        public IBuilder entityType(String entityType) {
+            request.setEntityType(entityType);
+            return this;
+        }
+
+        @Override
+        public IBuilder nationality(String nationality) {
+            request.setNationality(nationality);
             return this;
         }
     }

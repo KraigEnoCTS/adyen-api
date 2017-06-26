@@ -16,12 +16,17 @@
  */
 package com.github.woki.payments.adyen.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 
 /**
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @SuppressWarnings("serial")
+@Getter
+@Setter
 public class Error implements Serializable {
     private Integer status;
     private Integer errorCode;
@@ -35,38 +40,6 @@ public class Error implements Serializable {
         this.status = status;
         this.errorCode = errorCode;
         this.message = message;
-        this.errorType = errorType;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Integer getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(Integer errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getErrorType() {
-        return errorType;
-    }
-
-    public void setErrorType(String errorType) {
         this.errorType = errorType;
     }
 

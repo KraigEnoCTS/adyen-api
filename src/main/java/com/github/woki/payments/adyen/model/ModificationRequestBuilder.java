@@ -37,6 +37,8 @@ public final class ModificationRequestBuilder {
         IBuilder authorisationCode(String code);
         IBuilder reference(String reference);
         IBuilder modificationAmount(Amount amount);
+        IBuilder tenderReference(String tenderReference);
+        IBuilder uniqueTerminalId(String uniqueTerminalId);
         ModificationRequest build();
     }
 
@@ -68,6 +70,18 @@ public final class ModificationRequestBuilder {
         @Override
         public IBuilder modificationAmount(Amount amount) {
             request.setModificationAmount(amount);
+            return this;
+        }
+
+        @Override
+        public IBuilder tenderReference(String tenderReference) {
+            request.setTenderReference(tenderReference);
+            return this;
+        }
+
+        @Override
+        public IBuilder uniqueTerminalId(String uniqueTerminalId) {
+            request.setUniqueTerminalId(uniqueTerminalId);
             return this;
         }
 

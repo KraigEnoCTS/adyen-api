@@ -17,6 +17,8 @@
 package com.github.woki.payments.adyen.model;
 
 import com.github.woki.payments.adyen.support.ToStringStyle;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
@@ -27,6 +29,8 @@ import java.util.Map;
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @SuppressWarnings("serial")
+@Getter
+@Setter
 public class ModificationRequest implements Serializable {
     private Map<String, String> additionalData = new HashMap<>();
     private String authorisationCode;
@@ -34,54 +38,8 @@ public class ModificationRequest implements Serializable {
     private Amount modificationAmount;
     private String originalReference;
     private String reference;
-
-    public String getMerchantAccount() {
-        return merchantAccount;
-    }
-
-    public void setMerchantAccount(String merchantAccount) {
-        this.merchantAccount = merchantAccount;
-    }
-
-    public String getOriginalReference() {
-        return originalReference;
-    }
-
-    public void setOriginalReference(String originalReference) {
-        this.originalReference = originalReference;
-    }
-
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
-
-    public Map<String, String> getAdditionalData() {
-        return additionalData;
-    }
-
-    public void setAdditionalData(Map<String, String> additionalData) {
-        this.additionalData = additionalData;
-    }
-
-    public String getAuthorisationCode() {
-        return authorisationCode;
-    }
-
-    public void setAuthorisationCode(String authorisationCode) {
-        this.authorisationCode = authorisationCode;
-    }
-
-    public Amount getModificationAmount() {
-        return modificationAmount;
-    }
-
-    public void setModificationAmount(Amount modificationAmount) {
-        this.modificationAmount = modificationAmount;
-    }
+    private String tenderReference;
+    private String uniqueTerminalId;
 
     @Override
     public String toString() {
@@ -91,6 +49,8 @@ public class ModificationRequest implements Serializable {
                 .append("merchantAccount", merchantAccount)
                 .append("modificationAmount", modificationAmount)
                 .append("originalReference", originalReference)
-                .append("reference", reference).toString();
+                .append("reference", reference)
+                .append("tenderReference", tenderReference)
+                .append("uniqueTerminalId", uniqueTerminalId).toString();
     }
 }

@@ -16,6 +16,8 @@
  */
 package com.github.woki.payments.adyen.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -26,25 +28,11 @@ import java.util.Map;
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @SuppressWarnings("serial")
+@Getter
+@Setter
 public class TokenDetails implements Serializable {
     private String tokenDataType;
 	private Map<String, String> tokenData;
-
-    public String getTokenDataType() {
-        return tokenDataType;
-    }
-
-    public void setTokenDataType(String tokenDataType) {
-        this.tokenDataType = tokenDataType;
-    }
-
-    public Map<String, String> getTokenData() {
-        return tokenData;
-    }
-
-    public void setTokenData(Map<String, String> tokenData) {
-        this.tokenData = tokenData;
-    }
 
     @Override
     public String toString() {

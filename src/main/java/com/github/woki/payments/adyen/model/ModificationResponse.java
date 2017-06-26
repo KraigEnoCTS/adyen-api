@@ -17,6 +17,8 @@
 package com.github.woki.payments.adyen.model;
 
 import com.github.woki.payments.adyen.support.ToStringStyle;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
@@ -27,34 +29,12 @@ import java.util.Map;
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @SuppressWarnings("serial")
+@Getter
+@Setter
 public class ModificationResponse extends Error implements Serializable {
     private Map<String, String> additionalData = new HashMap<>();
     private String pspReference;
     private String response;
-
-    public String getPspReference() {
-        return pspReference;
-    }
-
-    public void setPspReference(String pspReference) {
-        this.pspReference = pspReference;
-    }
-
-    public String getResponse() {
-        return response;
-    }
-
-    public void setResponse(String response) {
-        this.response = response;
-    }
-
-    public Map<String, String> getAdditionalData() {
-        return additionalData;
-    }
-
-    public void setAdditionalData(Map<String, String> additionalData) {
-        this.additionalData = additionalData;
-    }
 
     @Override
     public String toString() {

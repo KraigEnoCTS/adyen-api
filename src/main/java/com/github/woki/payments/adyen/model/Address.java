@@ -18,6 +18,8 @@ package com.github.woki.payments.adyen.model;
 
 import com.github.woki.payments.adyen.support.ToStringStyle;
 import com.neovisionaries.i18n.CountryCode;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
@@ -26,6 +28,8 @@ import java.io.Serializable;
  * @author Willian Oki &lt;willian.oki@gmail.com&gt;
  */
 @SuppressWarnings("serial")
+@Getter
+@Setter
 public class Address implements Serializable {
     private String street;
     private String houseNumberOrName;
@@ -33,54 +37,6 @@ public class Address implements Serializable {
     private String city;
     private String stateOrProvince;
     private CountryCode country;
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getHouseNumberOrName() {
-        return houseNumberOrName;
-    }
-
-    public void setHouseNumberOrName(String houseNumberOrName) {
-        this.houseNumberOrName = houseNumberOrName;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStateOrProvince() {
-        return stateOrProvince;
-    }
-
-    public void setStateOrProvince(String stateOrProvince) {
-        this.stateOrProvince = stateOrProvince;
-    }
-
-    public CountryCode getCountry() {
-        return country;
-    }
-
-    public void setCountry(CountryCode country) {
-        this.country = country;
-    }
 
     @Override
     public String toString() {
