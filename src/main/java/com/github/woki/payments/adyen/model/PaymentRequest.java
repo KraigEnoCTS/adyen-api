@@ -54,6 +54,7 @@ public class PaymentRequest implements Serializable {
     private String orderReference;
     private Recurring recurring;
     private String reference;
+    private String recurringProcessingModel;
     private String selectedBrand;
     private String selectedRecurringDetailReference;
     private String sessionId;
@@ -107,6 +108,7 @@ public class PaymentRequest implements Serializable {
                 .append("orderReference", orderReference)
                 .append("paResponse", paResponse)
                 .append("recurring", recurring)
+                .append("recurringProcessingModel", recurringProcessingModel)
                 .append("reference", reference)
                 .append("selectedBrand", selectedBrand)
                 .append("selectedRecurringDetailReference", selectedRecurringDetailReference)
