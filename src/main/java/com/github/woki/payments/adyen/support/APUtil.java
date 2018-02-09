@@ -30,6 +30,9 @@ public final class APUtil {
     public static final String TEST_ENDPOINT = "https://pal-test.adyen.com";
     public static final String LIVE_ENDPOINT = "https://pal-live.adyen.com";
 
+    public static final String SUBSCRIPTION_MODEL = "Subscription";
+    public static final String CARDONFILE_MODEL = "CardOnFile";
+
     public enum ReferenceType {
         DATE, TIMESTAMP, UUID
     }
